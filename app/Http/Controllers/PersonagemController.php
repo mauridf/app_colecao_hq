@@ -37,7 +37,7 @@ class PersonagemController extends Controller
             $personagemRepository->selectAtributos($request->atributos);
         } 
 
-        return response()->json($personagemRepository->getResultadoPaginado(3), 200);
+        return response()->json($personagemRepository->getResultadoPaginado(5), 200);
     }
 
     /**

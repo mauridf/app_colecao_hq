@@ -24,3 +24,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/editoras', function() {
     return view('app.editoras');
 })->name('editoras')->middleware('auth');
+
+Route::get('/personagens', function() {
+    return view('app.personagens');
+})->name('personagens')->middleware('auth');

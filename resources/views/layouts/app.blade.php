@@ -39,7 +39,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Personagens</a>
+                                <a class="nav-link" href="{{ route('personagens') }}">Personagens</a>
                             </li>
 
                             <li class="nav-item">
@@ -104,7 +104,7 @@
                 </div>
             </div>
         </nav>
-        
+
          @auth
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
