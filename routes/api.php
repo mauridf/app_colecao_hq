@@ -25,3 +25,8 @@ Route::apiResource('tipo-serie', 'App\Http\Controllers\TipoSerieController');
 Route::apiResource('hq', 'App\Http\Controllers\HqController');
 Route::apiResource('hq-editora', 'App\Http\Controllers\HqEditoraController');
 Route::apiResource('hq-personagem', 'App\Http\Controllers\HqPersonagemController');
+
+Route::post('login', 'AuthController@login');
+Route::post('logout', 'AuthController@logout');
+Route::post('refresh', 'AuthController@refresh');
+Route::post('me', 'AuthController@me');
