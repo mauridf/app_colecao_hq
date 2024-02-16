@@ -36,7 +36,7 @@ class StatusController extends Controller
             $statusRepository->selectAtributos($request->atributos);
         } 
 
-        return response()->json($statusRepository->getResultadoPaginado(3), 200);
+        return response()->json($statusRepository->getResultadoPaginado(5), 200);
     }
 
     /**

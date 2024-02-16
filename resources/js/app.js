@@ -42,6 +42,7 @@ Vue.component('alert-component', require('./components/Alert.vue').default);
 Vue.component('paginate-component', require('./components/Paginate.vue').default);
 Vue.component('editora-component', require('./components/Editora.vue').default);
 Vue.component('personagem-component', require('./components/Personagem.vue').default);
+Vue.component('status-component', require('./components/Status.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

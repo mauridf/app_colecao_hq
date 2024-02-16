@@ -28,3 +28,7 @@ Route::get('/editoras', function() {
 Route::get('/personagens', function() {
     return view('app.personagens');
 })->name('personagens')->middleware('auth');
+
+Route::get('/status', function() {
+    return view('app.status');
+})->name('status')->middleware('auth');
