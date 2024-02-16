@@ -32,3 +32,7 @@ Route::get('/personagens', function() {
 Route::get('/status', function() {
     return view('app.status');
 })->name('status')->middleware('auth');
+
+Route::get('/tiposeries', function() {
+    return view('app.tiposeries');
+})->name('tiposeries')->middleware('auth');

@@ -3,7 +3,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <!-- início do card de busca -->
-                <card-component titulo="Busca de status">
+                <card-component titulo="Busca de tipo de série">
                     <template v-slot:conteudo>
                         <div class="form-row">
                             <div class="col mb-3">
@@ -12,8 +12,8 @@
                                 </input-container-component>                   
                             </div>
                             <div class="col mb-3">
-                                <input-container-component titulo="Status" id="inputStatus" id-help="statusHelp" texto-ajuda="Opcional. Informe o status">
-                                    <input type="text" class="form-control" id="inputStatus" aria-describedby="statusHelp" placeholder="Status" v-model="busca.status">
+                                <input-container-component titulo="Tipo de Série" id="inputTipoSerie" id-help="tipoSerieHelp" texto-ajuda="Opcional. Informe o tipo de série">
+                                    <input type="text" class="form-control" id="inputTipoSerie" aria-describedby="tipoSerieHelp" placeholder="Tipo de Série" v-model="busca.tiposerie">
                                 </input-container-component>
                             </div>
                         </div>
@@ -26,17 +26,17 @@
                 <!-- fim do card de busca -->
 
 
-                <!-- início do card de listagem de status -->
-                <card-component titulo="Relação de status">
+                <!-- início do card de listagem de tipo de serie -->
+                <card-component titulo="Relação de tipo de série">
                     <template v-slot:conteudo>
                         <table-component
-                            :dados="status.data"
-                            :visualizar="{visivel: true, dataToggle: 'modal', dataTarget: '#modalStatusVisualizar'}"
-                            :atualizar="{visivel: true, dataToggle: 'modal', dataTarget: '#modalStatusAtualizar'}"
-                            :remover="{visivel: true, dataToggle: 'modal', dataTarget: '#modalStatusRemover'}"
+                            :dados="tiposeries.data"
+                            :visualizar="{visivel: true, dataToggle: 'modal', dataTarget: '#modalTipoSerieVisualizar'}"
+                            :atualizar="{visivel: true, dataToggle: 'modal', dataTarget: '#modalTipoSerieAtualizar'}"
+                            :remover="{visivel: true, dataToggle: 'modal', dataTarget: '#modalTipoSerieRemover'}"
                             :titulos="{
                                 id: {titulo: 'ID', tipo: 'texto'},
-                                status: {titulo: 'Status', tipo: 'texto'},
+                                tiposerie: {titulo: 'Tipo de Série', tipo: 'texto'},
                                 created_at: {titulo: 'Criação', tipo: 'data'},
                             }"
                         ></table-component>
@@ -46,7 +46,7 @@
                         <div class="row">
                             <div class="col-10">
                                 <paginate-component>
-                                    <li v-for="l, key in status.links" :key="key"
+                                    <li v-for="l, key in tiposeries.links" :key="key"
                                         :class="l.active ? 'page-item active' : 'page-item'"
                                         @click="paginacao(l)"
                                     >
@@ -56,26 +56,26 @@
                             </div>
 
                             <div class="col">
-                                <button type="button" class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#modalStatus">Adicionar</button>
+                                <button type="button" class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#modalTipoSerie">Adicionar</button>
                             </div>
                         </div>
                     </template>
                 </card-component>
-                <!-- fim do card de listagem de status -->
+                <!-- fim do card de listagem de tipo de série -->
             </div>
         </div>
 
-        <!-- início do modal de cadastro de status -->
-        <modal-component id="modalStatus" titulo="Adicionar status">
+        <!-- início do modal de cadastro de tipo de série -->
+        <modal-component id="modalTipoSerie" titulo="Adicionar tipo de série">
             <template v-slot:alertas>
                 <alert-component tipo="success" :detalhes="transacaoDetalhes" titulo="Cadastro realizado com sucesso" v-if="transacaoStatus == 'adicionado'"></alert-component>
-                <alert-component tipo="danger" :detalhes="transacaoDetalhes" titulo="Erro ao tentar cadastrar o status" v-if="transacaoStatus == 'erro'"></alert-component>
+                <alert-component tipo="danger" :detalhes="transacaoDetalhes" titulo="Erro ao tentar cadastrar o tipo de série" v-if="transacaoStatus == 'erro'"></alert-component>
             </template>
 
             <template v-slot:conteudo>
                 <div class="form-group">
-                    <input-container-component titulo="Status" id="novoStatus" id-help="novoStatusHelp" texto-ajuda="Informe o status">
-                        <input type="text" class="form-control" id="novoStatus" aria-describedby="novoStatusHelp" placeholder="Status" v-model="nomeStatus">
+                    <input-container-component titulo="Tipo de Série" id="novoTipoSerie" id-help="novoTipoSerieHelp" texto-ajuda="Informe o tipo de série">
+                        <input type="text" class="form-control" id="novoTipoSerie" aria-describedby="novoTipoSerieHelp" placeholder="Tipo de Série" v-model="nomeTipoSerie">
                     </input-container-component>
                 </div>
             </template>
@@ -85,18 +85,18 @@
                 <button type="button" class="btn btn-primary" @click="salvar()">Salvar</button>
             </template>
         </modal-component>
-        <!-- fim do modal de cadastro de status -->
+        <!-- fim do modal de cadastro de tipo de série -->
 
-        <!-- início do modal de visualização de status -->
-        <modal-component id="modalStatusVisualizar" titulo="Visualizar status">
+        <!-- início do modal de visualização de tipo de série -->
+        <modal-component id="modalTipoSerieVisualizar" titulo="Visualizar tipo de série">
             <template v-slot:alertas></template>
             <template v-slot:conteudo>
                 <input-container-component titulo="ID">
                     <input type="text" class="form-control" :value="$store.state.item.id" disabled>
                 </input-container-component>
 
-                <input-container-component titulo="Status">
-                    <input type="text" class="form-control" :value="$store.state.item.status" disabled>
+                <input-container-component titulo="Tipo de Série">
+                    <input type="text" class="form-control" :value="$store.state.item.tiposerie" disabled>
                 </input-container-component>
 
                 <input-container-component titulo="Data de criação">
@@ -104,10 +104,10 @@
                 </input-container-component>
             </template>
         </modal-component>
-        <!-- fim do modal de visualização de status -->
+        <!-- fim do modal de visualização de tipo de série -->
 
-        <!-- início do modal de remoção de status -->
-        <modal-component id="modalStatusRemover" titulo="Remover status">
+        <!-- início do modal de remoção de tipo de série -->
+        <modal-component id="modalTipoSerieRemover" titulo="Remover tipo de série">
             <template v-slot:alertas>
                 <alert-component tipo="success" titulo="Transação realizada com sucesso" :detalhes="$store.state.transacao" v-if="$store.state.transacao.status == 'sucesso'"></alert-component>
                 <alert-component tipo="danger" titulo="Erro na transação" :detalhes="$store.state.transacao" v-if="$store.state.transacao.status == 'erro'"></alert-component>
@@ -117,8 +117,8 @@
                     <input type="text" class="form-control" :value="$store.state.item.id" disabled>
                 </input-container-component>
 
-                <input-container-component titulo="Status">
-                    <input type="text" class="form-control" :value="$store.state.item.status" disabled>
+                <input-container-component titulo="Tipo de Série">
+                    <input type="text" class="form-control" :value="$store.state.item.tiposerie" disabled>
                 </input-container-component>
             </template>
             <template v-slot:rodape>
@@ -126,10 +126,10 @@
                 <button type="button" class="btn btn-danger" @click="remover()" v-if="$store.state.transacao.status != 'sucesso'">Remover</button>
             </template>
         </modal-component>
-        <!-- fim do modal de remoção de status -->
+        <!-- fim do modal de remoção de tipo de série -->
 
-        <!-- início do modal de atualização de status -->
-        <modal-component id="modalStatusAtualizar" titulo="Atualizar status">
+        <!-- início do modal de atualização de tipo de série -->
+        <modal-component id="modalTipoSerieAtualizar" titulo="Atualizar tipo de série">
             <template v-slot:alertas>
                 <alert-component tipo="success" titulo="Transação realizada com sucesso" :detalhes="$store.state.transacao" v-if="$store.state.transacao.status == 'sucesso'"></alert-component>
                 <alert-component tipo="danger" titulo="Erro na transação" :detalhes="$store.state.transacao" v-if="$store.state.transacao.status == 'erro'"></alert-component>
@@ -137,8 +137,8 @@
 
             <template v-slot:conteudo>
                 <div class="form-group">
-                    <input-container-component titulo="Status" id="atualizarStatus" id-help="atualizarStatusHelp" texto-ajuda="Informe o status">
-                        <input type="text" class="form-control" id="atualizarStatus" aria-describedby="atualizarStatusHelp" placeholder="Status" v-model="$store.state.item.status">
+                    <input-container-component titulo="Tipo de Série" id="atualizarTipoSerie" id-help="atualizarTipoSerieHelp" texto-ajuda="Informe o tipo de série">
+                        <input type="text" class="form-control" id="atualizarTipoSerie" aria-describedby="atualizarTipoSerieHelp" placeholder="Tipo de Série" v-model="$store.state.item.tiposerie">
                     </input-container-component>
                 </div>
             </template>
@@ -148,7 +148,7 @@
                 <button type="button" class="btn btn-primary" @click="atualizar()">Atualizar</button>
             </template>
         </modal-component>
-        <!-- início do modal de atualização de status -->
+        <!-- início do modal de atualização de tipo de série -->
 
     </div>
 </template>
@@ -169,21 +169,21 @@ export default {
         },
         data() {
             return {
-                urlBase: 'http://localhost:8000/api/v1/status',
+                urlBase: 'http://localhost:8000/api/v1/tiposerie',
                 urlPaginacao: '',
                 urlFiltro: '',
-                nomeStatus: '',
+                nomeTipoSerie: '',
                 transacaoStatus: '',
                 transacaoDetalhes: {},
-                status: { data: [] },
-                busca: { id: '', status: '' }
+                tiposeries: { data: [] },
+                busca: { id: '', tiposerie: '' }
             }
         },
         methods: {
             atualizar(){
                 let formData = new FormData();
                 formData.append('_method', 'patch')
-                formData.append('status', this.$store.state.item.status)
+                formData.append('tiposerie', this.$store.state.item.tiposerie)
                 let url = this.urlBase + '/' + this.$store.state.item.id
                 let config = {
                     headers: {
@@ -195,7 +195,7 @@ export default {
                 axios.post(url, formData, config)
                     .then(response => {
                         this.$store.state.transacao.status = 'sucesso'
-                        this.$store.state.transacao.mensagem = 'Registro de status atualizado com sucesso!'
+                        this.$store.state.transacao.mensagem = 'Registro de tipo de série atualizado com sucesso!'
                         this.carregarLista()
                     })
                     .catch(errors => {
@@ -267,18 +267,18 @@ export default {
                 console.log(url)
                 axios.get(url, config)
                     .then(response => {
-                        this.status = response.data
-                        //console.log(this.status)
+                        this.tiposeries = response.data
+                        //console.log(this.tiposeries)
                     })
                     .catch(errors => {
                         console.log(errors)
                     })
             },
             salvar() {
-                console.log(this.nomeStatus)
+                console.log(this.nomeTipoSerie)
 
                 let formData = new FormData();
-                formData.append('status', this.nomeStatus)
+                formData.append('tiposerie', this.nomeTipoSerie)
 
                 let config = {
                     headers: {

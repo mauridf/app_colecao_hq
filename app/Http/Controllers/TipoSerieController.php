@@ -36,7 +36,7 @@ class TipoSerieController extends Controller
             $TipoSerieRepository->selectAtributos($request->atributos);
         } 
 
-        return response()->json($TipoSerieRepository->getResultadoPaginado(3), 200);
+        return response()->json($TipoSerieRepository->getResultadoPaginado(5), 200);
     }
 
     /**

@@ -47,7 +47,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Tipos de Séries</a>
+                                <a class="nav-link" href="{{ route('tiposeries') }}">Tipos de Séries</a>
                             </li>
 
                             <li class="nav-item">

@@ -24,7 +24,7 @@ Route::prefix('v1')->middleware('jwt.auth')->group(function() {
     Route::apiResource('editora', 'App\Http\Controllers\EditoraController');
     Route::apiResource('personagem', 'App\Http\Controllers\PersonagemController');
     Route::apiResource('status', 'App\Http\Controllers\StatusController');
-    Route::apiResource('tipo-serie', 'App\Http\Controllers\TipoSerieController');
+    Route::apiResource('tiposerie', 'App\Http\Controllers\TipoSerieController');
     Route::apiResource('hq', 'App\Http\Controllers\HqController');
     Route::apiResource('hq-editora', 'App\Http\Controllers\HqEditoraController');
     Route::apiResource('hq-personagem', 'App\Http\Controllers\HqPersonagemController');

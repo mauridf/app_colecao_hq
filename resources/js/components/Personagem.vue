@@ -338,6 +338,7 @@ export default {
                     .then(response => {
                         this.transacaoStatus = 'adicionado'
                         this.transacaoDetalhes = response
+                        this.carregarLista()
                         console.log(response)
                     })
                     .catch(errors => {
