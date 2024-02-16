@@ -33,7 +33,37 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                        @auth
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('editoras') }}">Editoras</a>
+                            </li>
 
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Personagens</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Status</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Tipos de Séries</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">HQs</a>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Relatórios</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">Relatório</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Relatório1</a>
+                                    <a class="dropdown-item" href="#">Relatório2</a>
+                                </div>
+                            </li>
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -74,6 +104,15 @@
                 </div>
             </div>
         </nav>
+        
+         @auth
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{Route::currentRouteName()}}</li>
+                </ol>
+            </nav>
+        @endauth
 
         <main class="py-4">
             @yield('content')

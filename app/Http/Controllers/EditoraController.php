@@ -37,7 +37,8 @@ class EditoraController extends Controller
             $editoraRepository->selectAtributos($request->atributos);
         } 
 
-        return response()->json($editoraRepository->getResultadoPaginado(3), 200);
+        return response()->json($editoraRepository->getResultadoPaginado(5), 200);
+        // return response()->json($editoraRepository->getResultado(),200);
     }
 
     /**
